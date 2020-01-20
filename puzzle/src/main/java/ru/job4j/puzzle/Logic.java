@@ -39,7 +39,7 @@ public class Logic {
         return rst;
     }
 
-    public boolean isFree(Cell ... cells) {
+    public boolean isFree(Cell... cells) {
         boolean result = cells.length > 0;
         for (Cell cell : cells) {
             if (this.findBy(cell) != -1) {
@@ -71,6 +71,12 @@ public class Logic {
     public boolean isWin() {
         int[][] table = this.convert();
         boolean result = false;
+        for (int i = 0; i < table.length; i++) {
+            if (horizontalFigure(table, i) || verticalFigure(table, i)) {
+                result = true;
+                break;
+            }
+        }
         return result;
     }
 
@@ -90,5 +96,29 @@ public class Logic {
     @Override
     public String toString() {
         return Arrays.toString(this.convert());
+    }
+
+    public boolean horizontalFigure(int[][] data, int index) {
+        boolean result = false;
+        for (int j = 0; j < data.length; j++) {
+            if (data[index][j] != 1) {
+                result = false;
+                break;
+            }
+            result = true;
+        }
+        return result;
+    }
+
+    public boolean verticalFigure(int[][] data, int index) {
+        boolean result = false;
+        for (int j = 0; j < data.length; j++) {
+            if (data[j][index] != 1) {
+                result = false;
+                break;
+            }
+            result = true;
+        }
+        return result;
     }
 }
