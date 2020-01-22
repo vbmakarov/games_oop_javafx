@@ -99,25 +99,23 @@ public class Logic {
     }
 
     public boolean horizontalFigure(int[][] data, int index) {
-        boolean result = false;
+        boolean result = true;
         for (int j = 0; j < data.length; j++) {
             if (data[index][j] != 1) {
                 result = false;
                 break;
             }
-            result = true;
         }
         return result;
     }
 
     public boolean verticalFigure(int[][] data, int index) {
-        boolean result = false;
+        boolean result = true;
         for (int j = 0; j < data.length; j++) {
             if (data[j][index] != 1) {
                 result = false;
                 break;
             }
-            result = true;
         }
         return result;
     }
